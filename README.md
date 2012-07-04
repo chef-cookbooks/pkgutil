@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/nathenharvey/pkgutil.png)](http://travis-ci.org/nathenharvey/pkgutil)
+
 Description
 ==========
 
