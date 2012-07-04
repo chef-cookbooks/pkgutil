@@ -16,6 +16,7 @@ end
 action :remove do
   if @pkgutil.installed
     system("pkgutil -y -r #{@pkgutil.name}")
+    new_resource.updated_by_last_action(true)
   end
 end
 
@@ -23,6 +24,7 @@ action :upgrade do
   if @pkgutil.installed 
     if needs_upgrade?
       system("pkgutil -y -u #{@pkgutil.name}")
+      new_resource.updated_by_last_action(true)
     end
   else
     do_install    
@@ -33,6 +35,7 @@ private
 
 def do_install
   system("pkgutil -y -i #{@pkgutil.name}")
+  new_resource.updated_by_last_action(true)
 end
 
 def installed?
