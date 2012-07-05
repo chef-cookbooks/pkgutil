@@ -1,4 +1,5 @@
-[![Build Status](https://secure.travis-ci.org/nathenharvey/pkgutil.png)](http://travis-ci.org/nathenharvey/pkgutil)
+[![Build Status](https://secure.travis-ci.org/wix/pkgutil.png)](http://travis-ci.org/wix/pkgutil)
+
 
 Description
 ===========
