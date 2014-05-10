@@ -10,6 +10,7 @@ end
 action :install do
   unless @pkgutil.installed
     do_install
+    new_resource.updated_by_last_action(true)
   end
 end
 
