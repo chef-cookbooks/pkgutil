@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-fail "Platform #{node[:platform]} is not supported by pkgutil" unless platform?("solaris2")
+fail "Platform #{node['platform']} is not supported by pkgutil" unless platform?("solaris2")
 
 bash "install_opencsw_repo" do
   user "root"
