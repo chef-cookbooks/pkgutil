@@ -16,7 +16,9 @@ end
 
 action :remove do
   if @pkgutil.installed
-    system("pkgutil -y -r #{@pkgutil.name}")
+    cmd = Mixlib::ShellOut.new("pkgutil -y -r #{@pkgutil.name}")
+    cmd.run_command
+    cmd.error!
     new_resource.updated_by_last_action(true)
   end
 end
@@ -24,28 +26,35 @@ end
 action :upgrade do
   if @pkgutil.installed 
     if needs_upgrade?
-      system("pkgutil -y -u #{@pkgutil.name}")
+      cmd = Mixlib::ShellOut.new("pkgutil -y -u #{@pkgutil.name}")
+      cmd.run_command
+      cmd.error!
       new_resource.updated_by_last_action(true)
     end
   else
     do_install    
+    new_resource.updated_by_last_action(true)
   end
 end
 
 private
 
 def do_install
-  system("pkgutil -y -i #{@pkgutil.name}")
-  new_resource.updated_by_last_action(true)
+  cmd = Mixlib::ShellOut.new("pkgutil -y -i #{@pkgutil.name}")
+  cmd.run_command
+  cmd.error!
 end
 
 def installed?
-  system("pkginfo -q -l #{@pkgutil.pkginfo_name}")
+  cmd = Mixlib::ShellOut.new("pkginfo -q -l #{@pkgutil.pkginfo_name}")
+  cmd.run_command
 end
 
 def pkginfo_name?
   Chef::Log.debug("trying to get solaris package name for #{@pkgutil.name}")
-  output = %x(pkgutil -a #{@pkgutil.name})
+  cmd = Mixlib::ShellOut.new("pkgutil -a #{@pkgutil.name}")
+  cmd.run_command
+  output = cmd.stdout
   output.split("\n").each do |line|
     info = line.split
     if info[0] == @pkgutil.name
@@ -58,7 +67,9 @@ end
 
 def needs_upgrade?
   Chef::Log.debug("trying to get version info for #{@pkgutil.name}")
-  output = %x(pkgutil -c #{@pkgutil.pkginfo_name})
+  cmd = Mixlib::ShellOut.new("pkgutil -c #{@pkgutil.pkginfo_name}")
+  cmd.run_command
+  output = cmd.stdout
   output.split("\n").each do |line|
     info = line.split
     if info[0] == @pkgutil.pkginfo_name 
