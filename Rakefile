@@ -1,6 +1,6 @@
 #!/usr/bin/env rake
 
-task :default => 'foodcritic'
+task :default => ['foodcritic', 'knife', 'spec']
 
 desc "Runs foodcritic linter"
 task :foodcritic do
@@ -17,7 +17,12 @@ desc "Runs knife cookbook test"
 task :knife do
   Rake::Task[:prepare_sandbox].execute
 
-  sh "bundle exec knife cookbook test cookbook -o #{sandbox_path}/../"
+  sh "bundle exec knife cookbook test pkgutil -o #{sandbox_path}/../"
+end
+
+desc "Runs chefspec"
+task :spec do
+  sh "bundle exec rspec spec"
 end
 
 task :prepare_sandbox do
@@ -30,5 +35,5 @@ end
 
 private
 def sandbox_path
-  File.join(File.dirname(__FILE__), %w(tmp cookbooks cookbook))
+  File.join(File.dirname(__FILE__), %w(tmp cookbooks pkgutil))
 end
