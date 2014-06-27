@@ -1,3 +1,4 @@
+name             "pkgutil"
 maintainer       "Martha Greenberg"
 maintainer_email "marthag@wix.com"
 license          "Apache 2.0"

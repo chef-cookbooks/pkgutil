@@ -1,0 +1,125 @@
+# Configuration file for pkgutil
+
+# $Id: pkgutil.conf 448 2012-02-04 14:22:21Z bonivart $
+
+# Master configuration file is placed in /opt/csw/etc. Place a pkgutil.conf
+# file in /etc/opt/csw if you want a local override setting-by-setting.
+
+# Nothing below is mandatory to change, pkgutil will use the default values 
+# noted below for each option unless something is uncommented.
+
+# Catalog not cached
+# Tells your proxy server to disable caching during fetching
+# of the catalog and descriptions.
+# Default: true
+#catalog_not_cached=true
+
+# Catalog update interval
+# Number of days between automatic catalog updates. Special cases are -1
+# if you want to disable automatic updates and 0 if you always want to
+# update the catalog.
+# Default: 14
+#catalog_update=14
+
+# Filter out CSWcommon from --deptree output
+# Set this to true if you don't want to see lots of lines with CSWcommon.
+# Default: false
+#deptree_filter_common=true
+
+# Exclude pattern
+# Space separated list of simple patterns that will exclude matching packages
+# when updating or installing.
+# Default: blank
+#exclude_pattern=
+
+# gpg homedir
+# The path to the gpg directory (instead of ~/.gnupg) when verifying the
+# catalogs integrity.
+# NOTE: we recommend you install the CSWcswpki package for
+#       easiest handling of the keys
+# Default: blank
+#gpg_homedir=
+
+# Max package list length
+# During dependency calculation the recursive algorithm needs to be protected
+# against cyclic dependencies in the catalog (packages that list each other
+# as dependencies) or pkgutil will not stop until memory is exhausted.
+# Default: 100000
+#maxpkglist=100000
+
+# Mirror to use for downloads
+# See http://www.opencsw.org/mirrors for alternative mirrors.
+# NOTE: remember to include distribution (e.g. testing) at the end of the url.
+# NOTE: you can have multiple mirrors by defining multiple mirror lines.
+# Default: http://mirror.opencsw.org/opencsw/testing
+#mirror=http://mirror.opencsw.org/opencsw/testing
+
+# Support non-CSW packages
+# If you have your own packages that have a different prefix that you want
+# to use with pkgutil you must enable this otherwise pkgutil will skip every
+# package not prefixed by CSW.
+# NOTE: this also affects options like -c/C, however it's easy to filter the
+#       output if wanted, e.g. "pkgutil -C CSW".
+# Default: false
+#noncsw=true
+
+# Options to use for pkgadd
+# You can set it to -S to skip displaying the license during install.
+# Solaris 10: If you wish to limit pkgutil to installing packages
+#             only to the global zone, set it to -G. Note that pkgrm
+#             does not have the same option.
+# WARNING: do not modify this unless you know what you're doing.
+# Default: blank
+#pkgaddopts=-G -S
+
+# Style of package list when installing/upgrading packages
+# 0 is the one used since the first version of pkgutil, it's space efficient
+# but less readable. 1 is the one introduced in v1.7, it's one package per
+# line which is easier to read. 2 is the same as 1 but also displays which
+# distribution a package comes from, e.g. unstable or stable.
+# Default: 2
+#pkgliststyle=2
+
+# Options to use for pkgrm
+# Solaris 10: If you wish to limit pkgutil to removing packages
+#             only in the global zone, set it to -O nozones.
+# WARNING: do not modify this unless you know what you're doing.
+# Default: blank
+#pkgrmopts=-O nozones
+
+# Root path to use
+# WARNING: do not modify this unless you know what you're doing.
+# Default: /
+#root_path=/a
+
+# Show the current list of packages or not
+# You can choose to not show the list of current packages to get less output
+# when doing operations.
+# Default: true
+#show_current=true
+
+# How to handle soft errors from hooks that are called
+# A hook that exits with code 1 will cause pkgutil to stop. If this value is
+# true, exit code 2 will also cause pkgutil to stop. Exit code 2 is a non-fatal
+# error condition from a hook and it is a site dependent choice whether or
+# not to honour this condition. Set to true to enable.
+# Default: false
+#stop_on_hook_soft_error=false
+
+# Use of gpg, md5
+# To enable use of gpg or md5, uncomment these
+# NOTE: it doesn't make sense to use md5 but not gpg so your options should be:
+#       1. both disabled, 2. gpg enabled, 3. both enabled.
+# Default: false, false
+#use_gpg=true
+#use_md5=true
+
+# Options to use for wget
+# You can also use any option from wgetrc with --execute, e.g.
+# "--execute http_proxy=http://proxy.foo.bar".
+# WARNING: do not modify this unless you know what you're doing.
+# Default: blank
+#wgetopts=-U pkgutil
+mirror=<%= node["opencsw"]["mirror"] + node["opencsw"]["release"] %>
+use_gpg=true
+use_md5=true
