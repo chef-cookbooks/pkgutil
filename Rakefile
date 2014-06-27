@@ -6,10 +6,10 @@ desc "Runs foodcritic linter"
 task :foodcritic do
   Rake::Task[:prepare_sandbox].execute
 
-  if Gem::Version.new("1.9.2") <= Gem::Version.new(RUBY_VERSION.dup)
+  if Gem::Version.new("1.9.3") <= Gem::Version.new(RUBY_VERSION.dup)
     sh "foodcritic -f any #{sandbox_path}"
   else
-    puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.2."
+    puts "WARN: foodcritic run is skipped as Ruby #{RUBY_VERSION} is < 1.9.3."
   end
 end
 
