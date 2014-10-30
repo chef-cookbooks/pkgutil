@@ -7,4 +7,6 @@ metadata
 
 group :integration do
   fixture 'install'
+  fixture 'add'
+  fixture 'remove'
 end

@@ -20,5 +20,9 @@ platforms:
       box: chef/solaris-10.11 # private
 
 suites:
-  - name: default
+  - name: pkgutil_install
     run_list: pkgutil_install::default
+  - name: pkgutil_add
+    run_list: pkgutil_add::default
+  - name: pkgutil_remove
+    run_list: pkgutil_remove::default
