@@ -22,9 +22,10 @@ require 'chef/mixin/shell_out'
 class Chef
   class Provider
     class Package
-      class Solaris < Chef::Provider::Package
+      class Pkgutil < Chef::Provider::Package
+        require_relative '_pkgutil_helper'
         include Chef::Mixin::ShellOut
-        include Pkgutil::Helper
+        include ::Pkgutil::Helper
         # based on 11-stable
 
         def define_resource_requirements
@@ -107,6 +108,6 @@ class Chef
   end
 end
 
-# Chef::Platform.set :platform => :solaris2, :resource => :package, :provider => Chef::Provider::Package::Pkgutil
+Chef::Platform.set :platform => :solaris2, :resource => :package, :provider => Chef::Provider::Package::Pkgutil
 
 
