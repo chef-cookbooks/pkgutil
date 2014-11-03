@@ -23,6 +23,7 @@ module Pkgutil
     # Run a pkgutil command
     #
     def pkgutil(command)
+      Chef::Log.info("Running command \"pkgutil #{command}\"")
       shell_out!(%Q(pkgutil #{command})).stdout
     end
   end
