@@ -15,6 +15,6 @@
 
 include_recipe 'pkgutil::install'
 
-pkgutil 'vim' do
+package 'vim' do
   action :install
 end

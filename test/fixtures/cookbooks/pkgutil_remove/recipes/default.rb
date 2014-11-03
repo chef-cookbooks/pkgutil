@@ -15,6 +15,6 @@
 
 include_recipe 'pkgutil_add::default'
 
-pkgutil 'vim' do
+package 'vim' do
   action :remove
 end
