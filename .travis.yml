@@ -1,10 +1,30 @@
 language: ruby
-gemfile:
-   - test/support/Gemfile
-rvm:
-  - 1.9.2
-  - 1.9.3
-script: 
-  - bundle exec rake knife
-  - bundle exec rake foodcritic
 
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1
+
+bundler_args: --jobs 7
+
+branches:
+  only:
+    - master
+
+before_install:
+  - export USE_SYSTEM_GECODE=1
+  - sudo apt-get -y install libgecode-dev
+
+script: bundle exec rake travis:ci
+
+notifications:
+  hipchat:
+    on_change: true
+    on_failure: true
+    on_success: false
+    on_pull_requests: false
+    rooms:
+      # Build Statuses
+      - secure: "hEuwVMLPVP1aM8C0bU3tzggzAAAWirHT0XQqFXGDNVeKWqtb0NgB7MXz+b2uH8XRFFscmsJIU+ZGsnjRMSEbpV73bjvlYj972mqVRrQIuZHQDjvjuhOXheYB17RRLDhy4O+Swdaxg0TAeTV9c5HE/Mv2ZZb2V6M7/+AeN/nugt8="
+      # Release Engineering
+      - secure: "XOsEMSsZ6xqOkk4xbSo0gVIkuAW4uijssgFnLZXsqqniwzpDs7L98KqRvcdSb/EcyUlUK7OdSY/oFiBNcL9tJ5i3HXtYYgWZ/8i8ZGHB2DP5k5a35JM9MqqKDmj5diRNi/fxIYKdiWCqwqFGqjqJ6KwA/zwdkeRFy+xCco4UiTA="
