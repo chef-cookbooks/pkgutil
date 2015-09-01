@@ -1,5 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/wix/pkgutil.png)](http://travis-ci.org/wix/pkgutil)
-
+[![Build Status](https://travis-ci.org/opscode-cookbooks/pkgutil.svg?branch=master)](https://travis-ci.org/opscode-cookbooks/pkgutil)
 
 Description
 ===========
