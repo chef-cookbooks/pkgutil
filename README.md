@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/opscode-cookbooks/pkgutil.svg?branch=master)](https://travis-ci.org/opscode-cookbooks/pkgutil)
+pgkutil
+=======
 
-Description
-===========
+[![Build Status](https://travis-ci.org/opscode-cookbooks/pkgutil.svg?branch=master)](https://travis-ci.org/opscode-cookbooks/pkgutil)
 
 Lightweight resource and provider to manage pkgutil packages for Solaris
 
