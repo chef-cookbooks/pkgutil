@@ -8,9 +8,7 @@ def load_current_resource
 end
 
 action :install do
-  unless @pkgutil.installed
-    do_install
-  end
+  do_install unless @pkgutil.installed
 end
 
 action :remove do
@@ -21,13 +19,13 @@ action :remove do
 end
 
 action :upgrade do
-  if @pkgutil.installed 
+  if @pkgutil.installed
     if needs_upgrade?
       system("pkgutil -y -u #{@pkgutil.name}")
       new_resource.updated_by_last_action(true)
     end
   else
-    do_install    
+    do_install
   end
 end
 
@@ -44,24 +42,20 @@ end
 
 def pkginfo_name?
   Chef::Log.debug("trying to get solaris package name for #{@pkgutil.name}")
-  output = %x(pkgutil -a #{@pkgutil.name})
+  output = `pkgutil -a #{@pkgutil.name}`
   output.split("\n").each do |line|
     info = line.split
-    if info[0] == @pkgutil.name
-      return info[1]
-    end
+    return info[1] if info[0] == @pkgutil.name
   end
 end
 
-
-
 def needs_upgrade?
   Chef::Log.debug("trying to get version info for #{@pkgutil.name}")
-  output = %x(pkgutil -c #{@pkgutil.pkginfo_name})
+  output = `pkgutil -c #{@pkgutil.pkginfo_name}`
   output.split("\n").each do |line|
     info = line.split
-    if info[0] == @pkgutil.pkginfo_name 
-      if info[2] == "SAME"
+    if info[0] == @pkgutil.pkginfo_name
+      if info[2] == 'SAME'
         return false
       else
         return true
