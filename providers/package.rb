@@ -54,12 +54,11 @@ def needs_upgrade?
   output = `pkgutil -c #{@pkgutil.pkginfo_name}`
   output.split("\n").each do |line|
     info = line.split
-    if info[0] == @pkgutil.pkginfo_name
-      if info[2] == 'SAME'
-        return false
-      else
-        return true
-      end
+    next unless info[0] == @pkgutil.pkginfo_name
+    if info[2] == 'SAME'
+      return false
+    else
+      return true
     end
   end
 end
