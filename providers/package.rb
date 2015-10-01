@@ -7,7 +7,7 @@ def load_current_resource
   @pkgutil.installed(installed?)
 end
 
-action :install do
+action :install do # ~FC017
   do_install unless @pkgutil.installed
 end
 
