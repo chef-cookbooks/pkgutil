@@ -1,7 +1,7 @@
-pgkutil cookbook
+pkgutil cookbook
 ================
-[![Build Status](https://travis-ci.org/chef-cookbooks/pgkutil.svg?branch=master)](http://travis-ci.org/chef-cookbooks/pgkutil)
-[![Cookbook Version](https://img.shields.io/cookbook/v/pgkutil.svg)](https://supermarket.chef.io/cookbooks/pgkutil)
+[![Build Status](https://travis-ci.org/chef-cookbooks/pkgutil.svg?branch=master)](http://travis-ci.org/chef-cookbooks/pkgutil)
+[![Cookbook Version](https://img.shields.io/cookbook/v/pkgutil.svg)](https://supermarket.chef.io/cookbooks/pkgutil)
 
 Lightweight resource and provider to manage pkgutil packages for Solaris
 
@@ -28,7 +28,7 @@ Then use the resources as follows:
 
 Or:
 
-    pkgutil_package "vim" do 
+    pkgutil_package "vim" do
       action :install
     end
 
@@ -36,7 +36,7 @@ Or:
       action :upgrade
     end
 
-    pkgutil_package "less" do 
+    pkgutil_package "less" do
       action :remove
     end
 
