@@ -7,13 +7,13 @@ describe 'pkgutil::opencsw' do
     expect(chef_run).to add_pkgutil_repository('OpenCSW').with(
       mirror: 'http://mirror.opencsw.org/opencsw',
       channel: 'stable',
-      verification: true,
+      verification: true
     )
   end
 
   it 'updates the package catalog' do
     expect(chef_run).to run_execute('pkgutil-update').with(
-      command: 'pkgutil -U',
+      command: 'pkgutil -U'
     )
   end
 end
