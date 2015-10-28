@@ -1,0 +1,98 @@
+# Configuration file for pkgutil
+
+# Master configuration file is placed in /opt/csw/etc. Place a pkgutil.conf
+# file in /etc/opt/csw if you want a local override setting-by-setting.
+
+# Nothing below is mandatory to change, pkgutil will use the default values
+# noted below for each option unless something is uncommented.
+
+# Catalog not cached
+# Tells your proxy server to disable caching during fetching
+# of the catalog and descriptions.
+# Default: true
+#catalog_not_cached=true
+
+# Catalog update interval
+# Number of days between automatic catalog updates. Special cases are -1
+# if you want to disable automatic updates and 0 if you always want to
+# update the catalog.
+# Default: 14
+#catalog_update=14
+
+# Exclude pattern
+# Space separated list of simple patterns that will exclude matching packages
+# when updating or installing.
+# Default: blank
+#exclude_pattern=
+
+# gpg homedir
+# The path to the gpg directory (instead of ~/.gnupg) when verifying the
+# catalogs integrity.
+# Default: blank
+gpg_homedir=<%= @gpg_homedir %>
+
+# Max package list length
+# During dependency calculation the recursive algorithm needs to be protected
+# against cyclic dependencies in the catalog (packages that list each other
+# as dependencies) or pkgutil will not stop until memory is exhausted.
+# Default: 2500000
+#maxpkglist=2500000
+
+# Mirror to use for downloads
+# See http://www.opencsw.org/mirrors for alternative mirrors.
+# Default: http://ibiblio.org/pub/packages/solaris/opencsw/current
+mirror=<%= "#{@mirror}/#{@channel}" %>
+
+# Support non-CSW packages
+# If you have your own packages that have a different prefix that you want
+# to use with pkgutil you must enable this otherwise pkgutil will skip every
+# package not prefixed by CSW.
+# NOTE: this also affects options like -c/C, however it's easy to filter the
+#       output if wanted, e.g. "pkgutil -C CSW".
+# Default: false
+noncsw=<%= @allow_noncsw %>
+
+# Options to use for pkgadd
+# You can set it to -S to skip displaying the license during install.
+# Solaris 10: If you wish to limit pkgutil to installing packages
+# only to the global zone, set it to -G. Note that pkgrm does not
+# have the same option.
+# WARNING: do not modify this unless you know what you're doing.
+# Default: blank
+<% if @pkgadd_options-%>
+pkgaddopts=<%= @pkgadd_options %>
+<% end -%>
+
+# Style of package list when installing/upgrading packages
+# 0 is the one used since the first version of pkgutil, it's space efficient
+# but less readable. 1 is the one introduced in v1.7, it's one package per
+# line which is easier to read.
+# Default: 0
+#pkgliststyle=0
+
+# How to handle soft errors from hooks that are called
+# A hook that exits with code 1 will cause pkgutil to stop. If this value is
+# true, exit code 2 will also cause pkgutil to stop. Exit code 2 is a non-fatal
+# error condition from a hook and it is a site dependent choice whether or
+# not to honour this condition. Set to true to enable.
+# Default: false
+#stop_on_hook_soft_error=false
+
+# Use of gpg, md5
+# To enable use of gpg or md5, uncomment these
+# NOTE: it doesn't make sense to use md5 but not gpg so your options should be:
+#       1. both disabled, 2. gpg enabled, 3. both enabled.
+# Default: false, false
+<% if @verification-%>
+use_gpg=true
+use_md5=true
+<% else -%>
+use_gpg=false
+use_md5=false
+<% end -%>
+
+# Options to use for wget
+# E.g. "-nv" for less verbose or "-q" for quiet.
+# WARNING: do not modify this unless you know what you're doing.
+# Default: blank
+#wgetopts=-q
