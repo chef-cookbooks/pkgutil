@@ -52,7 +52,7 @@ class Chef
     end
 
     action(:remove) do
-      if ::File.exist?(DEFAULT_PKGUTIL_CONF)
+      if ::File.exist?(DEFAULT_PKGUTIL_CONF) # ~FC023
         converge_by("Remove #{new_resource}") do
           Chef::Log.info "Removing #{new_resource.name} repository from `#{DEFAULT_PKGUTIL_CONF}'"
           file DEFAULT_PKGUTIL_CONF do
