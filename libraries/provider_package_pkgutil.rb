@@ -116,7 +116,7 @@ class Chef
           @pkg_name ||= begin
             name = catalog_name
             # CSW uses underscores in short package names and dashes in official package names.
-            name.gsub!('_', '-')
+            name.tr!('_', '-')
             # Prefix with `CSW`
             'CSW' << name
           end
