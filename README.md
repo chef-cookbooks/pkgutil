@@ -8,8 +8,7 @@ This project is managed by the CHEF Release Engineering team.  For more informat
 Requirements
 ------------
 
-- Chef 11 or higher
-- **Ruby 1.9.3 or higher**
+- Chef 11+
 
 Recipes
 -------
@@ -72,11 +71,11 @@ License & Authors
 -----------------
 
 - Author: Martha Greenberg (<marthag@wix.com>)
-- Author: Yvonne Lam (<yvonne@getchef.com>)
-- Author: Seth Chisamore (<schisamo@getchef.com>)
+- Author: Yvonne Lam (<yvonne@chef.io>)
+- Author: Seth Chisamore (<schisamo@chef.io>)
 
 ```text
-Copyright 2012-2014, Chef Software, Inc. (<legal@getchef.com>)
+Copyright 2012-2014, Chef Software, Inc. (<legal@chef.io>)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
