@@ -126,16 +126,16 @@ class Chef
           output = pkgutil("--parse -A #{new_resource.package_name}")
 
           if output == ''
-            fail("The package #{new_resource.package_name} does not exist in the catalog.")
+            raise("The package #{new_resource.package_name} does not exist in the catalog.")
           end
           output.each_line do |line|
             if new_resource.version.nil? && line.match(/^#{pkg_name}\s.+\sSAME$/)
               Chef::Log.info('Package is installed, no desired version specified.')
               return true
-            elsif line.match(/^#{pkg_name}\s#{new_resource.version}\sSAME$/)
+            elsif line =~ /^#{pkg_name}\s#{new_resource.version}\sSAME$/
               Chef::Log.info('Required version of package is installed.')
               return true
-            elsif line.match(/^#{pkg_name}\s#{new_resource.version}\snot installed$/)
+            elsif line =~ /^#{pkg_name}\s#{new_resource.version}\snot installed$/
               Chef::Log.info('Required package or version is not installed.')
               next
             end
