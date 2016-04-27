@@ -33,6 +33,8 @@ class Chef
   class Provider::PkgutilRepository < Provider::LWRPBase
     DEFAULT_PKGUTIL_CONF = '/etc/opt/csw/pkgutil.conf'.freeze
 
+    use_inline_resources
+
     def whyrun_supported?
       true
     end
