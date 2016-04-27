@@ -17,3 +17,7 @@ end
 describe command('/opt/csw/bin/pkgutil --parse -A znc') do
   its(:stdout) { should match(/^CSWznc\s+.*\sSAME$/) }
 end
+
+describe command('/opt/csw/bin/pkgutil --parse -A "bonnie\+\+"') do
+  its(:stdout) { should match(/^CSWbonnie\+\+\s+.*\sSAME$/) }
+end

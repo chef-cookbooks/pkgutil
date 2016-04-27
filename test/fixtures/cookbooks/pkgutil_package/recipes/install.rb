@@ -20,3 +20,7 @@ end
 package 'znc' do
   provider Chef::Provider::Package::Pkgutil
 end
+
+package 'bonnie++' do
+  action :install
+end
