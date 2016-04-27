@@ -1,4 +1,4 @@
-require_relative '../../../kitchen/data/spec_helper'
+require_relative 'shared/spec_helper'
 
 # serverspec's `package` resource uses the `pkg` command.
 # https://github.com/serverspec/specinfra/tree/master/lib/specinfra/command/solaris/base
@@ -10,10 +10,10 @@ require_relative '../../../kitchen/data/spec_helper'
 #  it { should not_be_installed }
 # end
 
-describe command('pkgutil --parse -A vim') do
+describe command('/opt/csw/bin/pkgutil --parse -A vim') do
   its(:stdout) { should match(/^CSWvim\s+.*\snot\sinstalled$/) }
 end
 
-describe command('pkgutil --parse -A znc') do
+describe command('/opt/csw/bin/pkgutil --parse -A znc') do
   its(:stdout) { should match(/^CSWznc\s+.*\snot\sinstalled$/) }
 end
