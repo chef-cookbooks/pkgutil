@@ -1,23 +1,18 @@
-pkgutil Cookbook
-================
-[![Build Status](https://travis-ci.org/chef-cookbooks/pkgutil.svg?branch=master)](http://travis-ci.org/chef-cookbooks/pkgutil)
-[![Cookbook Version](https://img.shields.io/cookbook/v/pkgutil.svg)](https://supermarket.chef.io/cookbooks/pkgutil)
+# pkgutil Cookbook
 
-This project is managed by the CHEF Release Engineering team.  For more information on the Release Engineering team's contribution, triage, and release process, please consult the [CHEF Release Engineering OSS Management Guide](https://docs.google.com/a/opscode.com/document/d/1oJB0vZb_3bl7_ZU2YMDBkMFdL-EWplW1BJv_FXTUOzg/edit).
+[![Build Status](https://travis-ci.org/chef-cookbooks/pkgutil.svg?branch=master)](http://travis-ci.org/chef-cookbooks/pkgutil) [![Cookbook Version](https://img.shields.io/cookbook/v/pkgutil.svg)](https://supermarket.chef.io/cookbooks/pkgutil)
 
-Requirements
-------------
+## Requirements
 
 - Chef 11+
 
-Recipes
--------
+## Recipes
 
 ### opencsw
-Configures the local the local pkgutil installation to point at the  Open Community Software Project (OpenCSW) package repository. The optional cryptographic verification will also be enabled for the repository.
 
-Resources/Providers
--------------------
+Configures the local the local pkgutil installation to point at the Open Community Software Project (OpenCSW) package repository. The optional cryptographic verification will also be enabled for the repository.
+
+## Resources/Providers
 
 ### package
 
@@ -41,19 +36,18 @@ This resource provides an easy way to manage pkgutil repositories. Default actio
 
 The `pkgutil_repository` resource has the following attributes:
 
-| Attribute         | Description
-| ----------------- | -----------
-| `mirror`          | mirror to use for downloads (defaults to `http://mirror.opencsw.org/opencsw`)
-| `channel`         | also called 'directories', see https://mirror.opencsw.org/opencsw/ for more
-| `verification`    | verify the catalog and each package using PGP
-| `gpg_homedir`     | path to the gpg directory (defaults to `/var/opt/csw/pki`)
-| `pkgadd_options`  | additional options to use for underlying pkgadd commands
-| `allow_noncsw`    | support non-CSW packages
+Attribute        | Description
+---------------- | -----------------------------------------------------------------------------
+`mirror`         | mirror to use for downloads (defaults to `http://mirror.opencsw.org/opencsw`)
+`channel`        | also called 'directories', see <https://mirror.opencsw.org/opencsw/> for more
+`verification`   | verify the catalog and each package using PGP
+`gpg_homedir`    | path to the gpg directory (defaults to `/var/opt/csw/pki`)
+`pkgadd_options` | additional options to use for underlying pkgadd commands
+`allow_noncsw`   | support non-CSW packages
 
 This resource will also ensure `pkgutil` and any required public keys are installed!
 
-Testing
--------
+## Testing
 
 You can run the tests in this cookbook using Rake:
 
@@ -67,12 +61,11 @@ rake style:ruby:auto_correct  # Auto-correct RuboCop offenses
 rake travis:ci                # Run tests on Travis
 ```
 
-License & Authors
------------------
+## License & Authors
 
-- Author: Martha Greenberg (<marthag@wix.com>)
-- Author: Yvonne Lam (<yvonne@chef.io>)
-- Author: Seth Chisamore (<schisamo@chef.io>)
+- Author: Martha Greenberg ([marthag@wix.com](mailto:marthag@wix.com))
+- Author: Yvonne Lam ([yvonne@chef.io](mailto:yvonne@chef.io))
+- Author: Seth Chisamore ([schisamo@chef.io](mailto:schisamo@chef.io))
 
 ```text
 Copyright 2012-2014, Chef Software, Inc. (<legal@chef.io>)
