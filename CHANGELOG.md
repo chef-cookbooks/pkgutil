@@ -2,6 +2,12 @@ pkgutil Cookbook CHANGELOG
 ======================
 This file is used to list changes made in each version of the pkgutil cookbook.
 
+## 2.0.0 (2016-09-16)
+- Enable use_inline_resources
+- Testing framework updates
+- Format readme and remove release engineering blurb
+- Require Chef 12.1
+
 ## v1.0.0 (2016-04-27)
 
 - Converted the pkgutil_package into a true package provider that runs as the default on Solaris systems
