@@ -8,5 +8,7 @@ version          '1.0.0'
 
 supports 'solaris2'
 
-source_url 'https://github.com/chef-cookbooks/pkgutil' if respond_to?(:source_url)
-issues_url 'https://github.com/chef-cookbooks/pkgutil/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-cookbooks/pkgutil'
+issues_url 'https://github.com/chef-cookbooks/pkgutil/issues'
+
+chef_version '>= 12.1'

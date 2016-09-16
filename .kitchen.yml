@@ -6,7 +6,6 @@ driver:
 
 provisioner:
   name: chef_zero
-  require_chef_omnibus: 11.16.4
 
 platforms:
   # The below boxes are shared via VagrantCloud. Until kitchen-vagrant is
