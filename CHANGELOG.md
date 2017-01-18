@@ -2,7 +2,13 @@ pkgutil Cookbook CHANGELOG
 ======================
 This file is used to list changes made in each version of the pkgutil cookbook.
 
+## 2.1.0 (2017-01-18)
+
+- Fix - handle "+" in package name
+- Update Github PR template
+
 ## 2.0.0 (2016-09-16)
+
 - Enable use_inline_resources
 - Testing framework updates
 - Format readme and remove release engineering blurb
