@@ -40,7 +40,7 @@ class Chef
           @current_resource.package_name(new_resource.package_name)
           @current_resource.version(nil)
 
-          output = pkgutil("--parse -A #{new_resource.package_name}")
+          output = pkgutil("--parse -A \"#{safe(new_resource.package_name)}\"")
 
           # Query for current installed version
           match = output.match(/^#{pkg_name}\s(.+)\sSAME$/)
@@ -55,7 +55,7 @@ class Chef
         def candidate_version
           Chef::Log.debug('Pkgutil: candidate_version')
           return @candidate_version if @candidate_version
-          output = pkgutil("--parse -a #{new_resource.package_name}")
+          output = pkgutil("--parse -a \"#{safe(new_resource.package_name)}\"")
           match = output.match(/^#{catalog_name}\s+#{pkg_name}\s(.+)\s\d+$/)
 
           if match
@@ -123,7 +123,7 @@ class Chef
         end
 
         def installed?
-          output = pkgutil("--parse -A #{new_resource.package_name}")
+          output = pkgutil("--parse -A \"#{safe(new_resource.package_name)}\"")
 
           if output == ''
             raise("The package #{new_resource.package_name} does not exist in the catalog.")
@@ -144,7 +144,7 @@ class Chef
         end
 
         def safe(string)
-          string.gsub('+', '\\\+')
+          string.gsub('+', '\\\\+')
         end
       end
     end

@@ -22,3 +22,7 @@ end
 package 'znc' do
   action :remove
 end
+
+package 'bonnie++' do
+  action :remove
+end
