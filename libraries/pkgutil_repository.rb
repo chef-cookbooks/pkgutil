@@ -54,7 +54,7 @@ class Chef
     end
 
     action(:remove) do
-      if ::File.exist?(DEFAULT_PKGUTIL_CONF) # ~FC023
+      if ::File.exist?(DEFAULT_PKGUTIL_CONF)
         converge_by("Remove #{new_resource}") do
           Chef::Log.info "Removing #{new_resource.name} repository from `#{DEFAULT_PKGUTIL_CONF}'"
           file DEFAULT_PKGUTIL_CONF do
@@ -70,7 +70,7 @@ class Chef
     # Idempotently install the `pkgutil` utility.
     #
     def ensure_pkgutil_installed!
-      node.run_state[:pkgutil_installed] ||= begin
+      node.run_state[:pkgutil_installed] ||= begin # ~FC001
         pkgutil_path = ::File.join(Chef::Config[:file_cache_path], 'pkgutil.pkg')
 
         remote_file pkgutil_path do
@@ -89,7 +89,7 @@ class Chef
     # Idempotently install the `cswpki` and import the keys.
     #
     def ensure_verification_enabled!
-      node.run_state[:verification_enabled] ||= begin
+      node.run_state[:verification_enabled] ||= begin # ~FC001
         execute 'enable-cryptographic-verification' do
           command <<-EOH.gsub(/ ^{12}/, '')
             pkgutil -y -i cswpki
