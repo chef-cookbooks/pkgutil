@@ -10,4 +10,4 @@ supports 'solaris2'
 
 source_url 'https://github.com/chef-cookbooks/pkgutil'
 issues_url 'https://github.com/chef-cookbooks/pkgutil/issues'
-chef_version '>= 12.1' if respond_to?(:chef_version)
+chef_version '>= 12.7' if respond_to?(:chef_version)
