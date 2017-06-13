@@ -8,18 +8,15 @@ provisioner:
   name: chef_zero
 
 platforms:
-  # The below boxes are shared via VagrantCloud. Until kitchen-vagrant is
-  # updated you'll need to add the box manually:
-  #
-  #   vagrant box add chef/solaris-10.11
-  #
-  # Please note private boxes will require a `vagrant login` for this to work.
+  # private box in Chef's Atlas account.
   - name: solaris-10.11
     run_list: pkgutil::opencsw
     driver:
       box: chef/solaris-10.11
 
 suites:
+  - name: opencsw_repo
+    run_list: pkgutil::opencsw
   - name: pkgutil_add
     run_list: pkgutil_package::install
   - name: pkgutil_remove

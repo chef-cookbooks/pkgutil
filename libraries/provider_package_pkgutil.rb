@@ -36,7 +36,7 @@ class Chef
 
         def load_current_resource
           Chef::Log.debug('Pkgutil: load_current_resource')
-          @current_resource = Chef::Resource::Package.new(new_resource.name)
+          @current_resource = new_resource.class.new(new_resource.name)
           @current_resource.package_name(new_resource.package_name)
           @current_resource.version(nil)
 

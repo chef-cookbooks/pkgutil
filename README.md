@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- Chef 12.1+
+- Chef 12.7+
 
 ## Recipes
 
@@ -12,7 +12,7 @@
 
 Configures the local the local pkgutil installation to point at the Open Community Software Project (OpenCSW) package repository. The optional cryptographic verification will also be enabled for the repository.
 
-## Resources/Providers
+## Resources
 
 ### package
 
