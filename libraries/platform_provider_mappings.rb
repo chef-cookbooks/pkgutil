@@ -21,15 +21,10 @@ require_relative 'provider_package_pkgutil'
 #########################################################################
 # Chef::Resource::Package Providers
 #########################################################################
-Chef::Platform.set(
-  platform: :solaris2,
-  resource: :package,
-  provider: Chef::Provider::Package::Pkgutil
-)
+class Chef::Provider::Package::Pkgutil
+  provides :package, platform: :solaris2
+end
 
-Chef::Platform.set(
-  platform: :solaris2,
-  version: '< 5.11',
-  resource: :package,
-  provider: Chef::Provider::Package::Pkgutil
-)
+class Chef::Provider::Package::Pkgutil
+  provides :package, platform: :solaris2, platform_version: '< 5.11'
+end
