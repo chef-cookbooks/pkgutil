@@ -2,6 +2,14 @@ pkgutil Cookbook CHANGELOG
 ======================
 This file is used to list changes made in each version of the pkgutil cookbook.
 
+## 3.0.0 (2017-11-01)
+
+- Test with Local Delivery instead of Rake
+- Update Apache license string in metadata
+- Convert repository to a custom resource which requires Chef 12.7+
+- Load current resource in a Chef 13 compatible way
+- Updated providers to Chef 13 compatible syntax
+
 ## 2.1.0 (2017-01-18)
 
 - Fix - handle "+" in package name
