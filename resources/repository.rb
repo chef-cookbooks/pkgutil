@@ -53,7 +53,7 @@ action_class do
   # Idempotently install the `pkgutil` utility.
   #
   def ensure_pkgutil_installed!
-    node.run_state[:pkgutil_installed] ||= begin # ~FC001
+    node.run_state[:pkgutil_installed] ||= begin
       pkgutil_path = ::File.join(Chef::Config[:file_cache_path], 'pkgutil.pkg')
 
       remote_file pkgutil_path do
@@ -72,7 +72,7 @@ action_class do
   # Idempotently install the `cswpki` and import the keys.
   #
   def ensure_verification_enabled!
-    node.run_state[:verification_enabled] ||= begin # ~FC001
+    node.run_state[:verification_enabled] ||= begin
       execute 'enable-cryptographic-verification' do
         command <<-EOH.gsub(/ ^{12}/, '')
           pkgutil -y -i cswpki
