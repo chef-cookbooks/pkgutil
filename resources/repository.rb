@@ -16,10 +16,10 @@
 
 property :mirror,  String, default: 'http://mirror.opencsw.org/opencsw'
 property :channel, String, equal_to: %w(unstable testing stable allpkgs), default: 'stable'
-property :verification, [true, false], default: false
+property :verification, [TrueClass, FalseClass], default: false
 property :gpg_homedir, String, default: '/var/opt/csw/pki'
 property :pkgadd_options, String
-property :allow_noncsw, [true, false], default: false
+property :allow_noncsw, [TrueClass, FalseClass], default: false
 
 DEFAULT_PKGUTIL_CONF = '/etc/opt/csw/pkgutil.conf'.freeze
 
