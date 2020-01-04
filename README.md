@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- Chef 12.7+
+- Chef 12.15+
 
 ## Recipes
 
